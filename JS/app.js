@@ -1,15 +1,3 @@
-const usuarios = [
-    {
-        login: 'admin',
-        pass: 'admin'
-    },
-    {
-        login: 'beto',
-        pass: 'beto'
-    }
-]
-
-
 function logar() {
 
     let validaUsuario = document.getElementById('login').value
