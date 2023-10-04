@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria Gourmet</title>
+    <link rel="stylesheet" href="CSS/main.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <H1 class="topo"><img src="imagens/titulo.png" width="500px"></h1>
+
+    <div class="wrapper">
+        <form action="">
+
+            <h4><img src="imagens/login.png" width="200px"></h4>
+
+            <div class="input-box">
+                <p><i class='bx bx-user'></i><input type="text" placeholder="Usuario" required id="login"></p>
+            </div>
+
+            <div class="input-box">
+                <p><i class='bx bx-lock'></i><input type="password" placeholder="Senha" required id="senha"></p>
+            </div>
+
+            <div class="sempre-logado">
+                <label><input type="checkbox">Sempre Logado</label>
+            </div>
+
+            <Button type="submit" class="btn" onclick="logar(); return false">Entrar</Button>
+
+            <div class="register-link">
+                <a href="#">Lembrar minha senha</a><br>
+                <a href="#">Novo Cliente</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="rodape"><a href="index.html">Home</a> | <a href="#">Nossa Historia</a> | <a href="#">Blog</a></div>
+
+    <script type="text/javascript" src="JS/app.js"></script>
+
+</body>
+
+</html>
