@@ -23,3 +23,32 @@ function logar() {
     }
 
 }
+
+function iniciarLoja() {
+    var containerProdutos = document.getElementById('produtos');
+    itens.map((val) => {
+        containerProdutos.innerHTML += `
+        <div class="produto-single">
+        <img src="`+ val.img + `" width="200px" />
+        <p>`+ val.nome + `</p>
+        <a key="`+ val.id + `"href="#">Adicionar ao Carrinho<a/>
+        </div>`;
+    })
+}
+
+function atualizarCarrinho() {
+    var containerCarrinho = document.getElementById('carrinho');
+    containerCarrinho.innerHTML = "";
+    itens.map((val) => {
+        if (val.quantidade > 0) {
+            containerCarrinho.innerHTML += `
+        
+        <p>`+ val.nome + ` | quantidade: ` + val.quantidade + `</p>
+        <hr>
+        `;
+        }
+    })
+}
+
+
+

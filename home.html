@@ -14,7 +14,17 @@
             <form action="">
     
                 <h4><img src="imagens/pedido.png" width="200px"></h4>
-    
+
+
+                <div id="produtos">
+
+
+                </div><!--produtos-->
+
+
+                <h2>Carrinho:</h2>
+                <div id="carrinho"> 
+                </div><!--carrinho-->
                
             </form>
         </div>
@@ -25,6 +35,20 @@
     
         <script type="text/javascript" src="JS/app.js"></script>
         <script type="text/javascript" src="JS/dados.js"></script>
+        <script>iniciarLoja();</script>
+        <script>atualizarCarrinho();
+        var links = document.getElementsByTagName('a');
+
+for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", function () {
+        let key = this.getAttribute('key');
+        itens[key].quantidade++;
+        atualizarCarrinho();
+        return false;
+    })
+}
+        </script>
+        
     
 
 </body>
