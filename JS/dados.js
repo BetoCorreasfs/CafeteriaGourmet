@@ -12,13 +12,13 @@ const usuarios = [
 const itens = [
     {
         id: 0,
-        nome: 'cafe',
-        img: '/imagens/cafe_preto.JPG',
+        nome: 'Cafe',
+        img: '/imagens/cafe_preto.png',
         quantidade:0
     },
     {
         id: 1,
-        nome: 'cafe com leite',
+        nome: 'Cafe com Leite',
         img: '/imagens/cafe_leite.png',
         quantidade:0
     }

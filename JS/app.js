@@ -29,9 +29,9 @@ function iniciarLoja() {
     itens.map((val) => {
         containerProdutos.innerHTML += `
         <div class="produto-single">
-        <img src="`+ val.img + `" width="200px" />
-        <p>`+ val.nome + `</p>
-        <a key="`+ val.id + `"href="#">Adicionar ao Carrinho<a/>
+        <img class="produto-img" src="`+ val.img + `" width="200px" />
+        <p class="produto-nome">`+ val.nome + `</p>
+        <a class="produto-key" key="`+ val.id + `"href="#"><img src="/imagens/plus.png" alt="Adicionar" style="width:42px;height:42px;"><a/>
         </div>`;
     })
 }
