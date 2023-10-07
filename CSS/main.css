@@ -95,11 +95,12 @@ body {
 
 
 .wrapper-home {
-    width: 800px;
+    width: 900px;
+    height: max-content;
     background: transparent;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    padding: 50px 100px;
+    padding: 10px 100px;
 }
 
 .home-titulo {
@@ -120,6 +121,7 @@ body {
 .produto-nome {
     position: relative;
     text-align: center;
+    white-space: nowrap;
 }
 
 .produto-img {
@@ -128,8 +130,14 @@ body {
 }
 
 .produto-key {
-    position: relative;
+    position: absolute;
     text-align: center;
+    left: 320px;
+}
+.produto-keymenos{
+    position: absolute;
+    text-align: center;
+    left: 260px;
 }
 
 .carrinho-titulo {

@@ -26,32 +26,22 @@
             <h4 class="carrinho-titulo">Pedido:</h4>
             <div class="carrinho" id="carrinho">
             </div><!--carrinho-->
-            <a class="btn-ok" href="/pedido.html" ><img src="/imagens/ok.png" alt="ok" style="width:42px;height:42px;"></a>
-            <a class="btn-limpar" href="/home.html" ><img src="/imagens/limpar.png" alt="Limpar" style="width:42px;height:42px;"></a>
+            <a class="btn-ok" href="/pedido.html"><img src="/imagens/ok.png" alt="ok"
+                    style="width:42px;height:42px;"></a>
+            <a class="btn-limpar" href="/home.html"><img src="/imagens/limpar.png" alt="Limpar"
+                    style="width:42px;height:42px;"></a>
 
         </form>
     </div>
 
 
 
-    <div class="rodape"><a href="index.html">Home</a> | <a href="#">Nossa Historia</a> | <a href="#">Blog</a></div>
-
+    
     <script type="text/javascript" src="JS/app.js"></script>
     <script type="text/javascript" src="JS/dados.js"></script>
     <script>iniciarLoja();</script>
-    <script>atualizarCarrinho();
-        var links = document.getElementsByTagName('a');
-
-        for (var i = 0; i < links.length; i++) {
-            links[i].addEventListener("click", function () {
-                let key = this.getAttribute('key');
-                itens[key].quantidade++;
-                atualizarCarrinho();
-                return false;
-            })
-        }
-    </script>
-
+    <script>atualizarCarrinho();</script>
+    <script>clickCarrinho();</script>
 
 
 </body>

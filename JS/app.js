@@ -29,9 +29,11 @@ function iniciarLoja() {
     itens.map((val) => {
         containerProdutos.innerHTML += `
         <div class="produto-single">
-        <img class="produto-img" src="`+ val.img + `" width="200px" />
+        <img class="produto-img" src="`+ val.img + `" width="150px" />
         <p class="produto-nome">`+ val.nome + `</p>
-        <a class="produto-key" key="`+ val.id + `"href="#"><img src="/imagens/plus.png" alt="Adicionar" style="width:42px;height:42px;"><a/>
+        <a class="produto-key" keyplus="`+ val.id + `"href="#"><img src="/imagens/plus.png" alt="Adicionar" style="width:45px"><a/>
+        <a class="produto-keymenos" keymenos="`+ val.id + `"href="#"><img src="/imagens/menos.png" alt="Retirar" style="width:45px"><a/>
+        
         </div>`;
     })
 }
@@ -49,6 +51,28 @@ function atualizarCarrinho() {
         }
     })
 }
+function clickCarrinho(){
+    var links = document.getElementsByTagName('a');
 
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener("click", function () {
+                let keyplus = this.getAttribute('keyplus');
+                itens[keyplus].quantidade++;
+                atualizarCarrinho();
+                return false;
+            })
+        }
+
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener("click", function () {
+                let keymenos = this.getAttribute('keymenos');
+                itens[keymenos].quantidade--;
+                atualizarCarrinho();
+                return false;
+            })
+        }
+    }
+
+    
 
 
