@@ -32,7 +32,7 @@
                     style="width:42px;height:42px;"></a>
 
                     <hr style="border-style: dotted;
-                    border-width: 2px;">
+                    border-width: 2px; margin-bottom: 5px;">
 
         </form>
 
@@ -50,14 +50,14 @@
                 <input type="text" id="cepid" placeholder="00000-000" required="required" name="cep" /><br>
                 
                 <label for="fone">Celular/Whasapp:</label>
-                <input type="tel" id="foneid" placeholder="(xx)xx-xx-xx-xx" name="fone" /><br>
+                <input type="tel" id="foneid" placeholder="(xx)9xxxx-xxxx" name="fone" /><br>
                 
                 <label for="email">Email</label>
                 <input type="email" id="emailid" placeholder="fulano@mail.com" name="email" />
     
                 <textarea type="textarea" id="obsid" placeholder="Obeservação:"name="obs" ></textarea>
     
-                <input type="submit" class="enviar" onclick="Enviar();" value="Enviar" />
+                <button class="enviar" id="send">Enviar</button>
             </form>
         </div>
     </div>
@@ -73,6 +73,7 @@
     <script>atualizarCarrinho();</script>
     <script>clickCarrinho();</script>
     <script>mostrarTela()</script>
+    <script>Enviar()</script>
 
 
 </body>

@@ -39,7 +39,7 @@ function iniciarLoja() {
 }
 
 function atualizarCarrinho() {
-    var containerCarrinho = document.getElementById('carrinho');
+    var containerCarrinho = document.getElementById('carrinho');  
     containerCarrinho.innerHTML = "";
     itens.map((val) => {
         if (val.quantidade > 0) {
@@ -88,18 +88,19 @@ function mostrarTela() {
 
 function Enviar() {
 
-    var end = document.getElementById("endid");
-    var cidade = document.getElementById("ciadeid");
-    var cep = document.getElementById("cepid");
-    var fone = document.getElementById("foneid");
-    var email = document.getElementById("emailid");
-    var obs = document.getElementById("obsid");
-
-
-    if (end.value != "") {
-        alert('Obrigado sr(a) ' + end.value + cidade.value + ' os seus dados foram encaminhados com sucesso');
-    }
-
+    const enviar = document.getElementById('send')
+        const enviarFormulario = () => {
+        let end = document.getElementById("endid").value;
+        let cidade = document.getElementById("ciadeid").value;
+        let cep = document.getElementById("cepid").value;
+        let fone = document.getElementById("foneid").value;
+        let email = document.getElementById("emailid").value;
+        let obs = document.getElementById("obsid").value;
+        let numero=5547999954099;
+        var win= window.open(`https://wa.me/${numero}?text=Ola%20segue%20meu%20Pedido%20Endereço%20de%20Entrega%20${end}%20${cep}%20${cidade}%20${fone}%20Email%20${email}%20Obs%20${obs}`,`_blank`);
+        }
+        enviar.addEventListener('click',enviarFormulario);        
+        
 }
 
 
