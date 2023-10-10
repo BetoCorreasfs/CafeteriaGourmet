@@ -4,8 +4,8 @@ const usuarios = [
         pass: 'admin'
     },
     {
-        login: 'beto',
-        pass: 'beto'
+        login: 'cliente',
+        pass: 'cliente'
     }
 ]
 

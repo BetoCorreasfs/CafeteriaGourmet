@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"  version="2.0"
+	targetNamespace="http://www.serpro.gov.br/liweb/schema/LoteLiWeb.html"
+	elementFormDefault="qualified"
+	xmlns="http://www.serpro.gov.br/liweb/schema/LoteLiWeb.html">
+
+	<xsd:element name="lote-li"  >
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="li"  type="li-type" minOccurs="1" maxOccurs="500"/>
+			</xsd:sequence>
+			<xsd:attribute name="idArquivoLote" type="identificador-lote-type" use="required"/>
+			<xsd:attribute name="versao" type="versao-lote-type" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="li-type">
+		<xsd:sequence>
+			<!--  ABA: BASICAS -->
+
+		    <!--  Para uso do Importador -->
+			<xsd:element name="identificador-li" type="identificador-li-type"/>
+
+			<!--  Tipo e Nr.Identificação do Importador -->
+			<xsd:element name="tipo-importador" type="tipo-importador-type"/>
+			<xsd:element name="identificacao-importador" type="cpf-cnpj-type"/>
+
+			<!-- Dados Auxiliares -->
+			<xsd:element name="pais-procedencia-mercadoria" type="numerico-3-type"/>
+			<xsd:element name="codigo-urf-entrada" type="numerico-7-type"/>
+			<xsd:element name="codigo-urf-despacho" type="numerico-7-type"/>
+			<!--  Informações Complementares -->
+			<xsd:element name="texto-informacoes-complementares" type="texto-visivel-3900-max-type"/>
+
+			<!--  ABA: FORNECEDOR -->
+			<!--  Tipo de Fornecedor (1|2|3) -->
+			<xsd:element name="tipo-fornecedor" type="tipo-fornecedor-type" nillable="false" minOccurs="1"/>
+
+			<!-- Tipo Fornecedor (1|2|3) Exportador/Fabricante/Produtor | Exportador -->
+			<xsd:element name="fornecedor-estrangeiro-nome" type="texto-visivel-60-max-type" nillable="false"/>
+			<xsd:element name="fornecedor-estrangeiro-email" type="email-60-max-type" nillable="false"/>
+			<xsd:element name="fornecedor-estrangeiro-responsavel" type="texto-visivel-60-max-type" nillable="false"/>
+			<xsd:element name="pais-aquisicao-mercadoria" type="numerico-3-type" nillable="false"/>
+			<xsd:element name="fornecedor-estrangeiro-logradouro" type="texto-visivel-40-max-type" nillable="false"/>
+			<xsd:element name="fornecedor-estrangeiro-numero" type="texto-visivel-6-max-type" nillable="false"/>
+			<xsd:element name="fornecedor-estrangeiro-complemento" type="texto-visivel-21-max-type" nillable="false"/>
+			<xsd:element name="fornecedor-estrangeiro-cidade" type="texto-visivel-25-max-type" nillable="false"/>
+			<xsd:element name="fornecedor-estrangeiro-uf" type="texto-visivel-25-max-type" nillable="false"/>
+
+			<!-- Tipo Fornecedor (2) Fabricante/Produtor -->
+			<xsd:element name="fabricante-nome" type="texto-visivel-60-max-type"/>
+			<xsd:element name="fabricante-email" type="email-60-max-type"/>
+			<xsd:element name="fabricante-responsavel" type="texto-visivel-60-max-type"/>
+			<xsd:element name="fabricante-endereco-logradoudo" type="texto-visivel-40-max-type"/>
+			<xsd:element name="fabricante-endereco-numero" type="texto-visivel-6-max-type"/>
+			<xsd:element name="fabricante-endereco-complemento" type="texto-visivel-21-max-type"/>
+			<xsd:element name="fabricante-endereco-cidade" type="texto-visivel-25-max-type"/>
+			<xsd:element name="fabricante-endereco-estado" type="texto-visivel-25-max-type"/>
+
+			<!-- Tipo Fornecedor (2|3) Fabricante/Produtor | Exportador-->
+			<xsd:element name="pais-origem-mercadoria" type="numerico-3-opcional-type"  />
+
+			<!--  ABA: MERCADORIA -->
+			<!--  Dados Gerais -->
+			<xsd:element name="subitem-ncm" type="numerico-8-type"/>
+			<xsd:element name="codigo-mercadoria-naladi" type="numerico-8-opcional-type"/>
+			<xsd:element name="codigo-moeda" type="numerico-3-type"/>
+			<xsd:element name="codigo-incoterms" type="codigo-incoterms-type"/>
+
+			<!--  Condição da Mercadoria -->
+			<xsd:element name="condicao-mercadoria" type="condicao-mercadoria-type"/>
+			<xsd:element name="tipo-enquadramento-material-usado" type="tipo-enquadramento-material-usado-type"/>
+			<xsd:element name="tipo-operacao-enquadramento-material-usado" type="tipo-operacao-enquadramento-material-usado-type"/>
+
+			<!-- Destaque NCM (Lista) -->
+			<xsd:element name="destaque-ncm" type="destaque-ncm-type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Listas de Destaques NCM (Multiplas ocorrencias)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!-- Processo Anuente (Lista) -->
+			<xsd:element name="processo-anuente" type="processo-anuente-type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Listas de Processos (Multiplas ocorrencias)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<!--  Drawback -->
+			<xsd:element name="drawback-regime"  type="drawback-regime-type"/>					<!-- REGIME DRAWBACK -->
+			<xsd:element name="drawback-numero-ato-isencao" type="numerico-9-13-opcional-type"/> 	<!--  Drawback:   4,5  -->
+			<xsd:element name="drawback-numero-ato-suspencao" type="numerico-11-opcional-type"/><!--  Drawback: 1,2  -->
+
+			<!--  Informações do Produto unificada (Lista) -->
+			<xsd:element name="detalhe-ncm-item-drawback" type="detalhe-ncm-item-drawback-type" minOccurs="0" maxOccurs="80">
+				<xsd:annotation>
+					<xsd:documentation>Lista de Detalhes NCM e Drawback (Multiplas ocorrencias)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+
+
+			<!--  ABA: NEGOCIACAO -->
+
+			<!--  Regime de Tributação -->
+			<xsd:element name="regime-acordo-tributario" type="numerico-1-type"/>
+			<xsd:element name="fundamento-legal-regime" type="numerico-2-opcional-type"/>
+
+			<!-- Acordo Tarifario -->
+			<xsd:element name="tipo-acordo-tarifario" type="tipo-acordo-tarifario-type"/>
+			<xsd:element name="codigo-acordo-aladi" type="numerico-3-opcional-type"/> <!--  tipo acordo = 2 -->
+
+
+			<!-- Cobertura Cambial -->
+			<!--  * Tipo (1|2|3|4) -->
+			<xsd:element name="cobertura-cambial" type="tipo-cobertura-cambial-type"/>
+
+			<!--  * Detalhes-->
+			<xsd:element name="modalidade-pagamento" type="numerico-2-opcional-type"/> 					<!-- Tipo = 1,2 -->
+			<xsd:element name="numero-dias-limite-pagamento" type="numerico-3-opcional-type"/>			<!-- Tipo = 1   -->
+			<xsd:element name="codigo-orgao-financeiro-internacional" type="numerico-2-opcional-type"/>	<!-- Tipo = 3   -->
+			<xsd:element name="codigo-motivo-sem-cobertura" type="numerico-2-opcional-type"/>			<!-- Tipo = 4   -->
+
+
+			<!--  TAG utilizada para registro de uma LI substitutiva -->
+			<xsd:element name="numero-li-substituida" type="numerico-10-opcional-type"  minOccurs="0" maxOccurs="1"/>
+
+			<!--  FORA DE USO -->
+			<!--
+			<xsd:element name="bem-sob-encomenda" type="S-OU-N-type"/>
+			<xsd:element name="codigo-atividade-economica" type="numerico-4-type"/>
+			<xsd:element name="numero-li-substituido" type="numerico-10-type"/>
+			<xsd:element name="codigo-origem-li" type="codigo-origem-li-type"/>
+			<xsd:element name="numero-comunicado-compra" type="comunicado-compra-type"/>
+			-->
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- TIPOS SIMPLIFICADOS PARA RESTRICAO DE CONTEUDO -->
+
+	<xsd:complexType name="processo-anuente-type">
+		<xsd:sequence>
+			<xsd:element name="numero-processo-anuente" type="identificador-processo-type"/>
+			<xsd:element name="sigla-orgao-anuente" type="letra-10-max-type"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:simpleType name="S-OU-N-type">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[SN]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="condicao-mercadoria-type">
+		<xsd:annotation>
+			<xsd:documentation>N - Nenhuma</xsd:documentation>
+			<xsd:documentation>S - Material Usado</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[SN]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+
+	<xsd:simpleType name="tipo-importador-type">
+		<xsd:annotation>
+			<xsd:documentation>1 - Pessoa Juridica</xsd:documentation>
+			<xsd:documentation>2 - Pessoa Fisica domiciliada no Pais</xsd:documentation>
+		</xsd:annotation>
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[1234]{1}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="tipo-fornecedor-type">
+		<xsd:annotation>
+			<xsd:documentation>1 - Fabricante/Produtor e exportador</xsd:documentation>
+			<xsd:documentation>2 - Fabricante/Produtor nao e exportador</xsd:documentation>
+			<xsd:documentation>3 - Fabricante/Produtor e desconhecido</xsd:documentation>
+		</xsd:annotation>
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[123]{1}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="drawback-regime-type">
+		<xsd:annotation>
+			<xsd:documentation>1 - Suspensao Generico</xsd:documentation>
+			<xsd:documentation>2 - Suspensao Nao Generico</xsd:documentation>
+			<xsd:documentation>3 - Nao Tem Drawback</xsd:documentation>
+			<xsd:documentation>4 - Isencao AC Web</xsd:documentation>
+			<xsd:documentation>5 - Isencao AC Papel</xsd:documentation>
+		</xsd:annotation>
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[12345]{1}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="tipo-acordo-tarifario-type">
+		<xsd:annotation>
+			<xsd:documentation>2 - ALADI</xsd:documentation>
+			<xsd:documentation>3 - OMC</xsd:documentation>
+			<xsd:documentation>4 - SGPC</xsd:documentation>
+		</xsd:annotation>
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="|[234]{1}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="tipo-cobertura-cambial-type">
+		<xsd:annotation>
+			<xsd:documentation>1 - Com Cobertura até 180 dias</xsd:documentation>
+			<xsd:documentation>2 - Com Cobertura de 180 até 360 dias</xsd:documentation>
+			<xsd:documentation>3 - Com Cobertura acima de 360 dias</xsd:documentation>
+			<xsd:documentation>4 - Sem Cobertura</xsd:documentation>
+		</xsd:annotation>
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[1234]{1}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="codigo-origem-li-type">
+		<xsd:annotation>
+			<xsd:documentation>W - LIWeb</xsd:documentation>
+		</xsd:annotation>
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[W]{1}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="cpf-cnpj-type">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[0-9]{11,14}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="tipo-enquadramento-material-usado-type">
+		<xsd:annotation>
+			<xsd:documentation>"" - Nao Selecionado</xsd:documentation>
+			<xsd:documentation>0  - Nao Selecionado</xsd:documentation>
+			<xsd:documentation>1  - Admissao Temporaria</xsd:documentation>
+			<xsd:documentation>2  - Nacionalizacao</xsd:documentation>
+		</xsd:annotation>
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="|[012]{1}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="tipo-operacao-enquadramento-material-usado-type">
+		<xsd:annotation>
+			<xsd:documentation>11 - Outros</xsd:documentation>
+			<xsd:documentation>01 - Ex-Tarifario</xsd:documentation>
+			<xsd:documentation>02 - Linha de Producao</xsd:documentation>
+			<xsd:documentation>03 - Maquinas de Reconstrucao</xsd:documentation>
+			<xsd:documentation>04 - Moldes e Ferramentas</xsd:documentation>
+			<xsd:documentation>05 - Veiculos com mais de 30 anosx</xsd:documentation>
+			<xsd:documentation>06 - Doacao</xsd:documentation>
+			<xsd:documentation>07 - Conteinerx</xsd:documentation>
+			<xsd:documentation>08 - Retorno de Mercadoria</xsd:documentation>
+			<xsd:documentation>09 - Partes e Pecas Recondicionadas</xsd:documentation>
+			<xsd:documentation>10 - Maquinas e Equipamentos</xsd:documentation>
+		</xsd:annotation>
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="|11|01|02|03|04|05|06|07|08|09|10"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+
+
+	<!-- tipos numericos -->
+	<xsd:simpleType name="numerico-1-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{1}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-2-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{2}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-2-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{2}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-3-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{3}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-3-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{3}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="numerico-3-max-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{0,3}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="numerico-4-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{4}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-4-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{4}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-6-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{6}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-6-max-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{3}|[0-9]{6}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-6-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{6}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="numerico-7-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{7}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-8-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{8}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-8-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{8}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-9-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{9}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-10-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{10}|"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-10-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{10}|"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-10-max-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{0,10}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-11-max-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{0,11}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="numerico-11-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{11}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-13-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{0,13}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-13-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{13}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-9-13-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{9}|[0-9]{13}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="numerico-20-max-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[0-9]{0,20}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- tipos numericos com ponto flutuante -->
+
+	<!-- 9 inteiros e 5 decimais -->
+	<xsd:simpleType name="decimal-9.5-type">
+	  <xsd:restriction base="xsd:decimal">
+	    <xsd:fractionDigits value="5"/>
+		<xsd:minInclusive value="0.0"/>
+		<xsd:maxInclusive value="999999999.99999"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- 13 inteiros e 7 decimais -->
+	<xsd:simpleType name="decimal-13.7-type">
+	  <xsd:restriction base="xsd:decimal">
+	    <xsd:fractionDigits value="7"/>
+		<xsd:minInclusive value="0.0"/>
+		<xsd:maxInclusive value="9999999999999.9999999"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- 13 inteiros e 7 decimais (opcional) -->
+	<xsd:simpleType name="decimal-13.7-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="|[0-9]{13}[.]{0,1}[0-9]{7}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+	<!-- 10 inteiros e 5 decimais -->
+	<xsd:simpleType name="decimal-10.5-type">
+	  <xsd:restriction base="xsd:decimal">
+	    <xsd:fractionDigits value="5"/>
+		<xsd:minInclusive value="0.0"/>
+		<xsd:maxInclusive value="9999999999.99999"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- 10 inteiros e 7 decimais -->
+	<xsd:simpleType name="decimal-10.7-type">
+	  <xsd:restriction base="xsd:decimal">
+	    <xsd:fractionDigits value="7"/>
+		<xsd:minInclusive value="0.0"/>
+		<xsd:maxInclusive value="9999999999.9999999"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- 10 inteiros e 9 decimais -->
+	<xsd:simpleType name="decimal-10.9-type">
+	  <xsd:restriction base="xsd:decimal">
+	    <xsd:fractionDigits value="9"/>
+		<xsd:minInclusive value="0.0"/>
+		<xsd:maxInclusive value="9999999999.999999999"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+
+
+
+	<!-- tipos contendo apenas letras -->
+
+	<xsd:simpleType name="letra-2-type">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[a-zA-Z]{2}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="letra-2-opcional-type">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="|[a-zA-Z]{2}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="letra-3-type">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[a-zA-Z]{3}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="letra-10-max-type">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[a-zA-Z]{0,10}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- tipos contendo apenas letras e números (sem levar em conta caracteres com acentuacao) -->
+
+	<xsd:simpleType name="identificador-lote-type">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[a-zA-Z0-9]{1,6}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="identificador-processo-type">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[a-zA-Z0-9]{0,20}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="versao-lote-type">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="2.0"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="identificador-li-type">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:pattern value="[a-zA-Z0-9]{1,15}"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<!--  email -->
+	<xsd:simpleType name="email-60-max-type">
+  		<xsd:restriction base="xsd:string">
+      		<!-- <xsd:pattern value="[^@]+@[^\.]+\..+"/>  -->
+      		<xsd:pattern value="([_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*)*"/>
+      		<xsd:maxLength value="60"/>
+    	</xsd:restriction>
+  	</xsd:simpleType>
+
+	 <!-- Texto contendo apenas caracteres visiveis -->
+
+	<xsd:simpleType name="texto-visivel-type">
+	  <xsd:restriction base="xsd:string">
+	    <!-- Deixa de fora apenas os caracteres de controle/> -->
+	    <xsd:pattern value="[\p{L}\p{N}\p{M}\p{P}\p{S}\p{Z}\s]*"/>
+	    <xsd:whiteSpace value="preserve"/>
+
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-6-type">
+	  <xsd:restriction base="texto-visivel-type">
+		  <xsd:length value="6"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-6-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="6"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-14-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="14"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-15-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="15"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-20-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="20"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-21-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="21"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-25-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="25"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="texto-visivel-40-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="40"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-50-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="50"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-60-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="60"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="texto-visivel-3900-max-type">
+	  <xsd:restriction base="texto-visivel-type">
+	    <xsd:minLength value="0"/>
+	    <xsd:maxLength value="3900"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="codigo-incoterms-type">
+	  <xsd:restriction base="xsd:string">
+	  	<xsd:pattern value="[a-zA-Z]{3}|[a-zA-Z]+\+[a-zA-Z]"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:complexType name="destaque-ncm-type">
+		<xsd:sequence>
+			<xsd:element name="numero-destaque-ncm" type="numerico-3-opcional-type"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="detalhe-ncm-item-drawback-type">
+		<xsd:sequence>
+			<xsd:element name="numero-sequencial-produto" type="numerico-2-type"/>
+			<xsd:element name="nome-unidade-medida-comercializada" type="texto-visivel-20-max-type"/>
+			<xsd:element name="peso-liquido-total" type="decimal-10.5-type"/>
+			<xsd:element name="qtd-mercadoria-unidade-comercializada" type="decimal-9.5-type"/>
+			<xsd:element name="qtd-mercadoria-unidade-estatistica" type="decimal-9.5-type"/>
+			<xsd:element name="valor-unitario-condicao-venda" type="decimal-13.7-type"/>
+			<xsd:element name="valor-total-local-embarque" type="decimal-13.7-type"/>
+			<xsd:element name="descricao-produto" type="texto-visivel-3900-max-type"/>
+			<xsd:element name="marca" type="texto-visivel-60-max-type"/>
+			<xsd:element name="modelo" type="texto-visivel-50-max-type"/>
+			<xsd:element name="numero-serie" type="texto-visivel-20-max-type"/>
+			<xsd:element name="ano-fabricacao" type="numerico-4-opcional-type"/>
+			<xsd:element name="item-ac-drawback" type="numerico-6-max-opcional-type"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+
+</xsd:schema>

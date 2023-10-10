@@ -51,28 +51,57 @@ function atualizarCarrinho() {
         }
     })
 }
-function clickCarrinho(){
+function clickCarrinho() {
     var links = document.getElementsByTagName('a');
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function () {
+            let keyplus = this.getAttribute('keyplus');
+            itens[keyplus].quantidade++;
+            atualizarCarrinho();
 
-        for (var i = 0; i < links.length; i++) {
-            links[i].addEventListener("click", function () {
-                let keyplus = this.getAttribute('keyplus');
-                itens[keyplus].quantidade++;
-                atualizarCarrinho();
-                return false;
-            })
-        }
-
-        for (var i = 0; i < links.length; i++) {
-            links[i].addEventListener("click", function () {
-                let keymenos = this.getAttribute('keymenos');
-                itens[keymenos].quantidade--;
-                atualizarCarrinho();
-                return false;
-            })
-        }
+        })
     }
 
-    
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function () {
+            let keymenos = this.getAttribute('keymenos');
+            itens[keymenos].quantidade--;
+            atualizarCarrinho();
+
+        })
+    }
+}
+
+function mostrarTela() {
+    var btn = document.querySelector('#btn-ok');
+    var container = document.querySelector('.wrapper-pedido');
+
+    btn.addEventListener('click', function () {
+        if (container.style.display === 'flex') {
+            container.style.display = 'none';
+        } else {
+            container.style.display = 'flex'
+        }
+
+    });
+}
+
+function Enviar() {
+
+    var end = document.getElementById("endid");
+    var cidade = document.getElementById("ciadeid");
+    var cep = document.getElementById("cepid");
+    var fone = document.getElementById("foneid");
+    var email = document.getElementById("emailid");
+    var obs = document.getElementById("obsid");
+
+
+    if (end.value != "") {
+        alert('Obrigado sr(a) ' + end.value + cidade.value + ' os seus dados foram encaminhados com sucesso');
+    }
+
+}
+
+
 
 
