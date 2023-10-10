@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="CSS/main.css">
 </head>
 <body>
-    <h3>Parabens Seu Pedido foi enviado</h3>
+    <div class="wrapper-home">
+
+            <h4 class="home-titulo">Obrigado! Seu Pedido foi enviado para:</h4>   
+    <div class="end">
+        <a class="a1">Endereço:</a><p class="p1" id="end"></p>
+        <a class="a2">CEP:</a><p class="p2" id="cep"></p>
+        <a class="a3">Cidade:</a><p class="p3" id="cidade"></p>
+    </div>
+</div>
+
+
+<script>
+
+var urlAtual = window.location.href;
+var urlClass = new URL(urlAtual);
+var nome = urlClass.searchParams.get("nome");
+var cep = urlClass.searchParams.get("cep");
+var cidade = urlClass.searchParams.get("cidade");
+
+function carregar(){
+				
+				document.getElementById("end").innerHTML = nome;
+                document.getElementById("cep").innerHTML = cep;
+                document.getElementById("cidade").innerHTML = cidade;
+			}
+			
+			window.onload = carregar;
+
+</script>
+    
 </body>
 </html>

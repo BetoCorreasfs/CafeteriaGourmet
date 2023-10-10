@@ -26,7 +26,7 @@
             <h4 class="carrinho-titulo">Pedido:</h4>
             <div class="carrinho" id="carrinho">
             </div><!--carrinho-->
-            <a class="btn-ok"  id="btn-ok"><img src="/imagens/ok.png" alt="ok"
+            <a class="btn-ok"  id="btn-ok" href="#section2"><img src="/imagens/ok.png" alt="ok"
                     style="width:42px;height:42px;"></a>
             <a class="btn-limpar" href="/home.html"><img src="/imagens/limpar.png" alt="Limpar"
                     style="width:42px;height:42px;"></a>
@@ -36,10 +36,10 @@
 
         </form>
 
-        <div class="wrapper-pedido">
+        <div class="wrapper-pedido" id="section2">
             <h3>Infome os dados para Entrega</h3>
     
-            <form class="form-pedido" name="meu_form">
+            <form action="/end.html" class="form-pedido" name="meu_form">
                 <label for="end">Endereço:</label>
                 <input type="text" id="endid" required="required" placeholder="Endereço, Complemento" name="nome" /><br>
                 
@@ -57,7 +57,7 @@
     
                 <textarea type="textarea" id="obsid" placeholder="Obeservação:"name="obs" ></textarea>
     
-                <button class="enviar" id="send">Enviar</button>
+                <button class="enviar" onclick="" href="/end.html" id="send">Enviar</button>
             </form>
         </div>
     </div>

@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 
 
 }
@@ -134,7 +135,8 @@ body {
     text-align: center;
     left: 320px;
 }
-.produto-keymenos{
+
+.produto-keymenos {
     position: absolute;
     text-align: center;
     left: 260px;
@@ -150,21 +152,21 @@ body {
 
 }
 
-.btn-ok{
+.btn-ok {
     position: absolute;
     text-align: center;
     top: 175px;
     left: 650px;
-    
+
 }
 
 
-.btn-limpar{
+.btn-limpar {
     position: absolute;
     text-align: center;
     top: 175px;
     left: 700px;
-    
+
 }
 
 
@@ -177,11 +179,12 @@ body {
 
 
 }
+
 .wrapper-pedido {
     display: none;
     width: 100px;
     text-align: left;
-    
+
 }
 
 
@@ -191,17 +194,18 @@ h3 {
     color: #000;
     text-shadow: 5px 5px 5px rgb(131, 131, 131);
     white-space: nowrap;
-    
+
 }
 
-.form-pedido{
+.form-pedido {
     position: relative;
     top: 50px;
-    
+
 }
 
-.form-pedido input, textarea {
-    
+.form-pedido input,
+textarea {
+
     width: 600px;
     height: 40px;
     padding: 5px;
@@ -211,7 +215,10 @@ h3 {
     border: 1px solid;
 }
 
-.form-pedido input:hover, textarea:hover, input:focus, textarea:focus {
+.form-pedido input:hover,
+textarea:hover,
+input:focus,
+textarea:focus {
     border-color: #000066;
     box-shadow: 5px 0px 9px #FFFF00;
     background-color: #66FFFF;
@@ -242,7 +249,44 @@ h3 {
     margin-left: 20px;
     margin-bottom: 20px;
     color: #000;
-    font-weight: bold; 
-  
+    font-weight: bold;
+
 }
 
+.end {
+    display: grid;
+}
+
+.a1 {
+    position: absolute;
+    left: 300px;
+    top: 40px;
+}
+
+.p1 {
+    position: relative;
+    left: 400px;
+    top: 11px;
+}
+
+.a2 {
+    position: absolute;
+    left: 300px;
+    top: 70px;
+}
+.p2 {
+    position: relative;
+    left: 400px;
+    top: 26px;
+}
+.a3 {
+    position: absolute;
+    left: 300px;
+    top: 100px;
+}
+.p3 {
+    position: relative;
+    left: 400px;
+    top: 37px;
+    
+}
