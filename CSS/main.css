@@ -200,7 +200,7 @@ h3 {
     
 }
 
-input, textarea {
+.form-pedido input, textarea {
     
     width: 600px;
     height: 40px;
@@ -210,7 +210,7 @@ input, textarea {
     border: 1px solid;
 }
 
-input:hover, textarea:hover, input:focus, textarea:focus {
+.form-pedido input:hover, textarea:hover, input:focus, textarea:focus {
     border-color: #000066;
     box-shadow: 5px 0px 9px #FFFF00;
     background-color: #66FFFF;
@@ -230,14 +230,14 @@ input:hover, textarea:hover, input:focus, textarea:focus {
     color: black;
 }
 
-textarea {
+.form-pedido textarea {
     width: 600px;
     height: 120px;
     line-height: 20px;
     max-width: 600px;
 }
 
-form label {
+.form-pedido form label {
     margin-left: 20px;
     margin-bottom: 20px;
     color: #000;
