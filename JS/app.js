@@ -24,6 +24,10 @@ function logar() {
 
 }
 
+function lembrarSenha(){
+    alert("Função em Construção - use Usuario: admin Senha: admin");
+}
+
 function iniciarLoja() {
     var containerProdutos = document.getElementById('produtos');
     itens.map((val) => {
@@ -41,6 +45,7 @@ function iniciarLoja() {
 function atualizarCarrinho() {
     var containerCarrinho = document.getElementById('carrinho');  
     containerCarrinho.innerHTML = "";
+    console.log(containerCarrinho);
     itens.map((val) => {
         if (val.quantidade > 0) {
             containerCarrinho.innerHTML += `
