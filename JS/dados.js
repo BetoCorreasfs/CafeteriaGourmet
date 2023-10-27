@@ -9,17 +9,24 @@ const usuarios = [
     }
 ]
 
-const itens = [
-    {
-        id: 0,
-        nome: 'Cafe',
-        img: '/imagens/cafe_preto.png',
-        quantidade:0
-    },
+let prodJson = [
     {
         id: 1,
+        nome: 'Cafe',
+        img: '/imagens/cafe_preto.png',
+        preco:1.00
+    },
+    {
+        id: 2,
         nome: 'Cafe com Leite',
         img: '/imagens/cafe_leite.png',
-        quantidade:0
-    }
+        preco:1.20
+    },
+    {
+        id: 3,
+        nome: 'Capuccino',
+        img: '/imagens/capuccino.png',
+        preco:1.50
+    },
+    
 ]

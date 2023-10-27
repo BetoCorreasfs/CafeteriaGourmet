@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -10,22 +10,114 @@
 
 <body>
 
+    <!-- produtos na lista e no carrinho -->
+    <div class="content-modelos">
+
+        <!-- lista de produtos-->
+        <div class="produtos">
+            <a href="">
+                <div class="prod-item-img"><img src="" /></div>
+                <div class="prod-item-add">+</div>
+            </a>
+            <div class="prod-item-preco">R$ --</div>
+            <div class="prod-item-nome"> --</div>
+        </div>
+
+        <!--produtos no carrinho-->
+        <div class="cart--item">
+            <img src="" />
+            <div class="cart--item-nome">--</div>
+            <div class="cart--item--qtarea">
+                <button class="cart--item-qtmenos">-</button>
+                <div class="cart--item--qt">1</div>
+                <button class="cart--item-qtmais">+</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="wrapper-home">
+
+        <header>
+
+            <h4 class="home-titulo"><img src="imagens/pedido.png" width="200px"></h4>
+            <div class="menu-openner"><span>0</span>🛒</div>
+        </header>
 
 
+        <main>
+
+            <H2>Produtos</H2>
+
+            <div class="produtos-area"></div>
+
+        </main>
+
+        <aside>
+            <div class="cart--area">
+                <div class="menu-closer">❌</div>
+                <h1>Seu Pedido</h1>
+                <div class="cart"></div>
+                <div class="cart--details">
+                    <div class="cart--totalitem subtotal">
+                        <span>Subtotal</span>
+                        <span>R$ --</span>
+                    </div>
+                    <div class="cart--totalitem desconto">
+                        <span>Desconto</span>
+                        <span>R$ --</span>
+                    </div>
+                    <div class="cart--totalitem total big">
+                        <span>Total</span>
+                        <span>R$ --</span>
+                    </div>
+                    <div id="cart--finalizar" class="cart--finalizar">Adicionar Endereço de Entrega</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- janela pedido produtos -->
+        <div class="produtoWindowArea">
+            <div class="produtoWindowBody">
+                <div class="produtoBig">
+                    <img src="" />
+                </div>
+                <div class="produtoInfo">
+                    <h1>--</h1>
+                        <div class="produtoInfo--precoArea">
+                        <div class="produtoInfo--sector">Preço</div>
+                        <div class="produtoInfo--preco">
+                            <div class="produtoInfo--precoAtual">R$ --</div>
+                            <div class="produtoInfo--qtarea">
+                                <button class="produtoInfo--qtmenos">-</button>
+                                <div class="produtoInfo--qt">1</div>
+                                <button class="produtoInfo--qtmais">+</button>
+                            </div>
+                        </div>
+                    </div>
+                <div class="produtoInfo--addButton">Adicionar ao carrinho</div>
+                <div class="produtoInfo--cancelButton">Cancelar</div>
+            </div>
+        </div>
+    </div>
+    <!-- /janela pedido produtos -->
+
+
+    <!--
     <div class="wrapper-home">
         <form action="">
 
-            <h4 class="home-titulo"><img src="imagens/pedido.png" width="200px"></h4>
+           
 
 
             <div id="produtos">
 
 
-            </div><!--produtos-->
+            </div>
 
             <h4 class="carrinho-titulo">Pedido:</h4>
             <div class="carrinho" id="carrinho">
-            </div><!--carrinho-->
+            </div>
             <a class="btn-ok"  id="btn-ok" href="#section2"><img src="/imagens/ok.png" alt="ok"
                     style="width:42px;height:42px;"></a>
             <a class="btn-limpar" href="/home.html"><img src="/imagens/limpar.png" alt="Limpar"
@@ -35,7 +127,7 @@
                     border-width: 2px; margin-bottom: 5px;">
 
         </form>
-
+-->
         <div class="wrapper-pedido" id="section2">
             <h3>Infome os dados para Entrega</h3>
     
@@ -62,19 +154,13 @@
         </div>
     </div>
 
-    
 
 
 
-    
-    <script type="text/javascript" src="JS/app.js"></script>
+
     <script type="text/javascript" src="JS/dados.js"></script>
-    <script>iniciarLoja();</script>
-    <script>atualizarCarrinho();</script>
-    <script>clickCarrinho();</script>
-    <script>mostrarTela()</script>
-    <script>Enviar()</script>
-
+    <script type="text/javascript" src="JS/app.js"></script>
+    
 
 </body>
 
