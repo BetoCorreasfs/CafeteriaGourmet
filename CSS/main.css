@@ -562,40 +562,27 @@ textarea:focus {
 
 }
 
-.end {
-    display: grid;
+
+.wrapper-end {
+    width: 900px;
+    height:200px;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    
+       
 }
 
-.a1 {
-    position: absolute;
-    left: 300px;
-    top: 40px;
+.end-titulo{
+    text-align: center;
+    margin:  20px
 }
 
-.p1 {
-    position: relative;
-    left: 400px;
-    top: 11px;
-}
-
-.a2 {
-    position: absolute;
-    left: 300px;
-    top: 70px;
-}
-.p2 {
-    position: relative;
-    left: 400px;
-    top: 26px;
-}
-.a3 {
-    position: absolute;
-    left: 300px;
-    top: 100px;
-}
-.p3 {
-    position: relative;
-    left: 400px;
-    top: 37px;
+.end{
+    
+    font-family:'Hepta Slab', Helvetica, Arial;
+    align-content: center;
+    margin-left: 300px ;
     
 }
+

@@ -109,8 +109,8 @@ const adicionarNoCarrinho = () => {
         console.log("Pizza " + modalKey)
         // quantidade
         console.log("Quant. " + quantProd)
-        
-       
+
+
         let nome = seleciona('.produtoInfo h1').innerHTML = idnome
         let preco = seleciona('.produtoInfo--precoAtual').innerHTML.replace('R$ ', '')
         console.log(preco)
@@ -172,9 +172,9 @@ const fecharCarrinho = () => {
 const atualizarCarrinho = () => {
     // exibir número de itens no carrinho
     seleciona('.menu-openner span').innerHTML = cart.length
-	
+
     // mostrar ou nao o carrinho
-    if(cart.length > 0) {
+    if (cart.length > 0) {
 
         // mostrar o carrinho
         seleciona('aside').classList.add('show')
@@ -185,13 +185,13 @@ const atualizarCarrinho = () => {
         // crie as variaveis antes do for
         let subtotal = 0
         let desconto = 0
-        let total    = 0
+        let total = 0
 
         // para preencher os itens do carrinho, calcular subtotal
-        for(let i in cart) {
+        for (let i in cart) {
             // use o find para pegar o item por id
-            let prodItem = prodJson.find( (item) => item.id == cart[i].id )
-        	
+            let prodItem = prodJson.find((item) => item.id == cart[i].id)
+
             // em cada item pegar o subtotal
             subtotal += cart[i].preco * cart[i].qt
             console.log(cart[i].preco)
@@ -216,7 +216,7 @@ const atualizarCarrinho = () => {
 
             cartItem.querySelector('.cart--item-qtmenos').addEventListener('click', () => {
                 console.log('Clicou no botão menos')
-                if(cart[i].qt > 1) {
+                if (cart[i].qt > 1) {
                     // subtrair apenas a quantidade que esta neste contexto
                     cart[i].qt--
                 } else {
@@ -231,7 +231,7 @@ const atualizarCarrinho = () => {
             })
 
             seleciona('.cart').append(cartItem)
-                
+
 
         } // fim do for
 
@@ -240,12 +240,11 @@ const atualizarCarrinho = () => {
         //desconto = subtotal * 0.1
         desconto = subtotal * 0
         total = subtotal - desconto
-console.log(total)
         // exibir na tela os resultados
         // selecionar o ultimo span do elemento
         seleciona('.subtotal span:last-child').innerHTML = formatoReal(subtotal)
         seleciona('.desconto span:last-child').innerHTML = formatoReal(desconto)
-        seleciona('.total span:last-child').innerHTML    = formatoReal(total)
+        seleciona('.total span:last-child').innerHTML = formatoReal(total)
 
     } else {
         // ocultar o carrinho
@@ -253,6 +252,9 @@ console.log(total)
         seleciona('aside').style.left = '100vw'
     }
 }
+
+
+
 
 prodJson.map((item, index) => {
 
@@ -358,24 +360,31 @@ function clickCarrinho() {
     }
 }
  */
-const mostrarTela= () => {
+const mostrarTela = () => {
     var btn = document.querySelector('.cart--finalizar');
     var container = document.querySelector('.wrapper-pedido');
- 
+
     btn.addEventListener('click', function () {
         if (container.style.display === 'flex') {
             container.style.display = 'none';
         } else {
             container.style.display = 'flex'
         }
- 
+
     });
 }
 
-const Enviar= () => {
+const Enviar = () => {
+
+
 
     const enviar = document.getElementById('send')
-    const enviarFormulario = () => {      
+    const enviarFormulario = () => {
+        let carrinho = ''
+        for (let produto of cart) {
+            carrinho += "Produto: " + produto.nome + " Quantidade: " + produto.qt + " Valor Total: " + produto.qt * produto.preco + ".\n";
+        }
+        
         let end = document.getElementById("endid").value;
         let cidade = document.getElementById("ciadeid").value;
         let cep = document.getElementById("cepid").value;
@@ -383,12 +392,12 @@ const Enviar= () => {
         let email = document.getElementById("emailid").value;
         let obs = document.getElementById("obsid").value;
         let numero = 5547999954099;
-        var win = window.open(`https://wa.me/${numero}?text=Ola%20segue%20meu%20Pedido%20Endereço%20de%20Entrega%20%20${end}%20${cep}%20${cidade}%20${fone}%20Email%20${email}%20Obs%20${obs}`, `_blank`);
+        var win = window.open(`https://wa.me/${numero}?text=Ola%20segue%20meu%20Pedido%20Endereço%20de%20Entrega%20${carrinho}%20${end}%20${cep}%20${cidade}%20${fone}%20Email%20${email}%20Obs%20${obs}`, `_blank`);
     }
     enviar.addEventListener('click', enviarFormulario);
 
 }
-   
+
 mostrarTela()
 Enviar()
 
